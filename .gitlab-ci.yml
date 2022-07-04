@@ -27,7 +27,7 @@ docker-build:
   script:
     - docker ps
     - docker build -t $DOCKER_ACC/nginx:latest .
-    - docker push
+    - docker push $DOCKER_ACC/nginx:latest
 
 #jenkins-build:
 #  image: ubuntu:18.04
