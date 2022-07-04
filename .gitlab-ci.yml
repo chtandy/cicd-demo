@@ -33,7 +33,7 @@ deploy-to-k8s:
     - |
       #echo "172.16.91.100   k8s-beta.gamesoft-tech.com" >> /etc/hosts
       apt-get update && apt install -y curl
-      mkdir ${HOME}/.kube && echo "$K8SBETA" | base64 --decode > ${HOME}/.kube/config
+      mkdir ${HOME}/.kube && echo "$K8SCERT" | base64 --decode > ${HOME}/.kube/config
       export KUBECONFIG=${HOME}/.kube/config
       curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
       chmod +x kubectl && mv kubectl /usr/bin/kubectl
