@@ -24,7 +24,7 @@ docker-build:
     - docker build -t $DOCKER_ACC/nginx:latest .
     - docker push $DOCKER_ACC/nginx:latest
 
-deploy-to-k8s
+deploy-to-k8s:
   image: ubuntu:18.04
   stage: deploy-to-k8s
   tags:
