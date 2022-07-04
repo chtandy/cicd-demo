@@ -3,6 +3,8 @@ stages:
 #  - jenkins_build
   
 docker-build:
+  services:
+    - docker:20.10.7
   image: docker:latest
   stage: docker-build
   tags:
