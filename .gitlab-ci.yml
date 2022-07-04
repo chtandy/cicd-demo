@@ -1,0 +1,24 @@
+stages:
+  - docker-build
+#  - jenkins_build
+  
+docker-build:
+  image: docker:latest
+  stage: docker-build
+  tags:
+    - nexdata-k8s
+  before_script:
+    - ls -al
+    - echo $DOCKER_PWD | docker login --username=$DOCKER_ACC --password-stdin
+  script:
+    - docker build -t $DOCKER_ACC/nginx:latest .
+    - docker push
+
+#jenkins-build:
+#  image: ubuntu:18.04
+#  stage: jenkins_build
+#  tags:
+#    - beta-kubernetes
+#  script:
+#    - |
+#      apt-get update && apt install -y curl
