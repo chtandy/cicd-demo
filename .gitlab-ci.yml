@@ -25,18 +25,17 @@ docker-build:
     - docker push $DOCKER_ACC/nginx:latest
 
 deploy-to-k8s:
-  image: bitnami/kubectl:1.24.2
-  #image: ubuntu:18.04
+  image: ubuntu:18.04
   stage: deploy-to-k8s
   tags:
     - nexdata-k8s-runner
   script:
     - |
-      #echo "10.1.5.12  k8s.nexdata.lab" >> /etc/hosts
-      #apt-get update && apt install -y curl
+      echo "10.1.5.12  k8s.nexdata.lab" >> /etc/hosts
+      apt-get update && apt install -y curl
       mkdir ${HOME}/.kube && echo "$K8SCERT" | base64 --decode > ${HOME}/.kube/config
       export KUBECONFIG=${HOME}/.kube/config
-      #curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-      #chmod +x kubectl && mv kubectl /usr/bin/kubectl
+      curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+      chmod +x kubectl && mv kubectl /usr/bin/kubectl
       ls -al ${HOME}/.kube/config
       kubectl get pods
