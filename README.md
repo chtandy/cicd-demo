@@ -3,6 +3,6 @@
 
 - [使用 Docker 鏡像作為構建環境](https://support.atlassian.com/bitbucket-cloud/docs/use-docker-images-as-build-environments/#Custom-build-environments)  
  
-
+- [Pipeline artifacts](https://support.atlassian.com/bitbucket-cloud/docs/use-artifacts-in-steps/)  
 
 
