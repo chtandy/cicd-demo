@@ -1,0 +1,13 @@
+pipelines:
+  default:
+    - step:
+        name: Build and Push Wavenet Repository
+        script:
+          # 要再管道中使用docker build，需要export DOCKER_BUILDKIT=1的參數
+          - export DOCKER_BUILDKIT=1
+          - echo ${DOCKERPASSWD} | docker login --username ${DOCKERUSER} --password-stdin
+          - docker build -t r19750927/nginx:latest .
+          - docker push r19750927/nginx:latest
+        ## 僅在步驟過程使用docker，此選項為官方推薦
+        services:
+          - docker
