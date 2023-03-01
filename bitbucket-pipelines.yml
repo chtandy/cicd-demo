@@ -11,8 +11,8 @@ pipelines:
           # 要再管道中使用docker build，需要export DOCKER_BUILDKIT=1的參數
           - export DOCKER_BUILDKIT=1
           - echo ${DOCKERPASSWD} | docker login --username ${DOCKERUSER} --password-stdin
-          - docker build -t ${DOCKERUSER}/nginx:latest .
-          - docker push ${DOCKERUSER}/nginx:latest
+          - docker build -t ${DOCKERUSER}/nginx:red .
+          - docker push ${DOCKERUSER}/nginx:red
         ## 僅在步驟過程使用docker，此選項為官方推薦
         services:
           - docker
